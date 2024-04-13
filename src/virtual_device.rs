@@ -296,6 +296,22 @@ impl VirtualDevice {
         self.synchronize()
     }
 
+    pub fn move_mouse_abs_x(&mut self, x: Coord) -> EmptyResult {
+        self.write(EV_ABS, ABS_X, x)?;
+        self.synchronize()
+    }
+
+    pub fn move_mouse_abs_y(&mut self, y: Coord) -> EmptyResult {
+        self.write(EV_ABS, ABS_Y, y)?;
+        self.synchronize()
+    }
+
+    pub fn move_mouse_abs(&mut self, x: Coord, y: Coord) -> EmptyResult {
+        self.write(EV_ABS, ABS_X, x)?;
+        self.write(EV_ABS, ABS_Y, y)?;
+        self.synchronize()
+    }
+
     pub fn scroll_x(&mut self, value: Coord) -> EmptyResult {
         self.write(EV_REL, REL_HWHEEL, value)?;
         self.synchronize()
