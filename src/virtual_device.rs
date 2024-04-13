@@ -187,6 +187,25 @@ impl VirtualDevice {
     }
 
     #[inline]
+    pub fn send_mouse_move_abs_x(x: Coord, sender: &ChannelSender) -> EmptyResult {
+        sender.send((EV_ABS, ABS_Y, x))?;
+        Ok(())
+    }
+
+    #[inline]
+    pub fn send_mouse_move_abs_y(y: Coord, sender: &ChannelSender) -> EmptyResult {
+        sender.send((EV_ABS, ABS_Y, y))?;
+        Ok(())
+    }
+
+    #[inline]
+    pub fn send_mouse_move_abs(x: Coord, y: Coord, sender: &ChannelSender) -> EmptyResult {
+        sender.send((EV_ABS, ABS_X, x))?;
+        sender.send((EV_ABS, ABS_Y, y))?;
+        Ok(())
+    }
+
+    #[inline]
     pub fn send_mouse_move_x(x: Coord, sender: &ChannelSender) -> EmptyResult {
         sender.send((EV_REL, REL_X, x))?;
         Ok(())
