@@ -1,11 +1,11 @@
 use std::path::Path;
-use std::{mem, ptr, slice, thread};
+use std::{mem, slice, thread};
 use std::ffi::CString;
 use std::fs::File;
 use std::io::Write;
 use std::os::fd::AsRawFd;
 use std::thread::{JoinHandle, sleep};
-use std::time::{Duration, Instant, SystemTime};
+use std::time::{Duration, Instant};
 use nix::errno::Errno;
 use crossbeam_channel::{Sender, Receiver, bounded};
 
